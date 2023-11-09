@@ -10,12 +10,20 @@
 
         <article>
             <h2><a href="">Product 1</a></h2>
-            <p>The first product of this page!</p>
+            <p>{{ products }}</p>
+            {% for product in products %}
+                {{ product }}
+            {% endfor %}
         </article>
 
-        <article>
-            <h2><a href="">Product 2</a></h2>
-            <p>The second product on this page!</p>
-        </article>
+        <h2>Second Test</h2>
+
+        {% for product in products %}
+            <article>
+                <h3><a href="">{{ product.name }}</a></h3>
+                <p>{{ product.price }}</p>
+                <p>{{ product.description }}</p>
+            </article>
+        {% endfor %}
     </body>
 </html>
