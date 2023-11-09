@@ -1,29 +1,14 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Basta Streetwear!</title>
-    </head>
-    <body>
-        <header>
-            <h1><a href="/">Basta Streetwear</a></h1>
-        </header>
+<!-- List of files this code block extends to -->
+{% extends 'product/base.html' %}
 
-        <article>
-            <h2><a href="">Product 1</a></h2>
-            <p>{{ products }}</p>
-            {% for product in products %}
-                {{ product }}
-            {% endfor %}
+<!-- This file contains the block of code that displays products -->
+<!-- can be called into other files using {% block name %} {% endblock %} -->
+{% block content %}
+    {% for product in products %}
+        <article class="product">
+            <h3><a href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a></h3>  <!-- Get product name -->
+            <p>{{ product.price }}</p>                                                          <!-- Get product price -->
+            <p>{{ product.description }}</p>                                                    <!-- Get product description -->
         </article>
-
-        <h2>Second Test</h2>
-
-        {% for product in products %}
-            <article>
-                <h3><a href="">{{ product.name }}</a></h3>
-                <p>{{ product.price }}</p>
-                <p>{{ product.description }}</p>
-            </article>
-        {% endfor %}
-    </body>
-</html>
+    {% endfor %}
+{% endblock %}
