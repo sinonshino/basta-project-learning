@@ -29,7 +29,7 @@ class Product(models.Model):
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(null=True, blank=True)
     price = models.DecimalField(max_digits=6, decimal_places=2)
-#   image
+    image = models.ImageField(upload_to='product_images/', null=True, blank=True)
 #   thumbnail
     date_added = models.DateTimeField(auto_now_add=True)
 

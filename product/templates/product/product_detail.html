@@ -5,7 +5,7 @@
 <!-- can be called into other files using {% block name %} {% endblock %} -->
 {% block content %}
     <article class="product">
-        <h3><a href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a></h3>  <!-- Get product name -->
+        <h3><a href="{% url 'product_detail' category_slug=category.slug product_slug=product.slug %}">{{ product.name }}</a></h3>  <!-- Get product name -->
         <p>€{{ product.price }}</p>                                                          <!-- Get product price -->
         <p>{{ product.description }}</p>                                                    <!-- Get product description -->
     </article>
