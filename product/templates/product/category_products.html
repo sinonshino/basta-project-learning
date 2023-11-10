@@ -13,7 +13,6 @@
             <a href="{% url 'product_detail' category_slug=product.category.slug product_slug=product.slug %}" class="product-box">
                 <img src="{{ product.image.url }}" alt="{{ product.name }}">
                     <h2>{{ product.name }}</h2>
-                    <p>{{ product.description }}</p>
                     <span class="product-price">€{{ product.price }}</span>
                 </a>
             {% empty %}

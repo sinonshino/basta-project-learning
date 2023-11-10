@@ -150,6 +150,37 @@ h4 {
     transition: transform 0.3s ease-in-out; /* Transition effect for rotation */
 }
 
+.toggle-button {
+    width: 60px; /* Adjust the width to your preference */
+    height: 60px; /* Set the height to make it a circle */
+    border-radius: 50%;
+    background-color: #111; /* Set the background color */
+    color: #fff; /* Set the text color */
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 50%; /* Center vertically at 50% height of the sidenav */
+    left: -30px; /* Adjust to place half of the circle off the left */
+    transform: translateY(-50%);
+    z-index: 2; /* Ensure the button appears above the sidebar */
+    transition: 0.5s;
+}
+
+.toggle-button::before {
+    content: '←';
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    right: 10%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Adjust the rotation of the arrow when the sidenav is open */
+.toggle-button.active::before {
+    transform: translateY(-50%) scaleX(-1);
+}
+
 .product-boxes {
     display: flex;
     flex-wrap: wrap;
@@ -157,33 +188,41 @@ h4 {
 }
 
 .product-box {
-    width: calc(33.33% - 20px); /* Calculate width to fit three boxes with 20px gap */
+    width: calc(25% - 20px);
+    position: relative;
     border: 1px solid #ccc;
-    padding: 10px;
-    text-align: center;
     background-color: #f9f9f9;
-    box-sizing: border-box; /* Include padding in the width calculation */
+    box-sizing: border-box;
+    overflow: hidden; /* Ensure overflow is hidden to contain the floated content */
 }
 
 .product-box img {
-    max-width: 100%;
+    width: 100%;
     height: auto;
+    max-height: 100%;
+    display: block;
+    margin: auto;
+}
+
+.product-box .content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.product-box h2, .product-box .product-price {
+    padding: 10px;
+    margin: 0;
 }
 
 .product-box h2 {
     font-size: 18px;
-    margin: 10px 0;
 }
 
-.product-box p {
-    font-size: 14px;
-    color: #555;
-}
-
-.product-price {
+.product-box .product-price {
     font-size: 16px;
     color: #c25100;
     font-weight: bold;
 }
-
-

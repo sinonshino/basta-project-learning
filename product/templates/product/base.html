@@ -13,7 +13,6 @@
     <body>
         <div id="mySidenav" class="sidenav">
             <h3 class="sidenav-title">Categories</h3>
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <ul>
                 {% for category in categories %}
                     <li>
@@ -34,7 +33,9 @@
             
         </div>
 
-        <span onclick="openNav()">Open</span>
+        <button class="toggle-button" onclick="toggleNav()">
+        <div class="arrow"></div>
+        </button>
 
         <div id="main">
             <header class="page-header">
@@ -53,20 +54,29 @@
         </div>
 
         <script>
-        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        // Set the width of the side navigation to 250px and the left margin of the page content to 250px
         document.getElementById("mySidenav").style.width = "250px";
         document.getElementById("main").style.marginLeft = "250px";
+        document.getElementsByClassName("toggle-button")[0].style.left = "220px";
 
-        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "250px";
-            document.getElementById("main").style.marginLeft = "250px";
-        }
+        // A button which can open and close the sidenav
+        function toggleNav() {
+            const sideNav = document.getElementById("mySidenav");
+            const mainContent = document.getElementById("main");
+            const toggleButton =  document.getElementsByClassName("toggle-button")[0];
 
-        /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
-        function closeNav() {
-            document.getElementById("mySidenav").style.width = "0";
-            document.getElementById("main").style.marginLeft = "0";
+            if (sideNav.style.width === "250px") {
+                sideNav.style.width = "0";
+                mainContent.style.marginLeft = "0";
+                toggleButton.style.left = "-30px";
+            } else {
+                sideNav.style.width = "250px";
+                mainContent.style.marginLeft = "250px";
+                toggleButton.style.left = "220px";
+
+            }
+            toggleButton.classList.toggle('active');
+
         }
 
         // Add event listeners to the dropdown arrows with the class 'dropdown-arrow'
