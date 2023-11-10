@@ -146,17 +146,44 @@ h4 {
     display: inline-block;
     margin-left: 5px;
     color: #818181;
-    transform: rotate(0deg); /* Initial state */
+    transform: rotate(-90deg); /* Initial state */
     transition: transform 0.3s ease-in-out; /* Transition effect for rotation */
 }
 
-/* Initially, set the arrow to face right */
-.category-link .dropdown-arrow {
-    transform: rotate(-90deg); /* Rotate 270 degrees */
-    transition: transform 0.2s; /* Add a transition effect for smooth rotation */
+.product-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
 }
 
-/* When the category link is clicked, rotate the arrow */
-.category-link:focus .dropdown-arrow {
-    transform: rotate(0deg); /* Rotate 0 degrees when clicked */
+.product-box {
+    width: calc(33.33% - 20px); /* Calculate width to fit three boxes with 20px gap */
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    background-color: #f9f9f9;
+    box-sizing: border-box; /* Include padding in the width calculation */
 }
+
+.product-box img {
+    max-width: 100%;
+    height: auto;
+}
+
+.product-box h2 {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-box p {
+    font-size: 14px;
+    color: #555;
+}
+
+.product-price {
+    font-size: 16px;
+    color: #c25100;
+    font-weight: bold;
+}
+
+

@@ -24,7 +24,7 @@ class Category(models.Model):
 # Define the Product Model
 class Product(models.Model):
     # Defining the model's fields (the columns in the database)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)    # Linked to another model
+    category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)    # Linked to another model
     name = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, blank=True)
     description = models.TextField(null=True, blank=True)

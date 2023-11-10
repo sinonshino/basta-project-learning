@@ -3,7 +3,7 @@
 
 <!-- This file contains the block of code that displays products -->
 <!-- can be called into other files using {% block name %} {% endblock %} -->
-{% block products %}
+{% block content %}
     {% for product in products %}
         <article class="product">
             <h3><a href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a></h3>  <!-- Get product name -->

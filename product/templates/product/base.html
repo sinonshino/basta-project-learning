@@ -17,14 +17,14 @@
             <ul>
                 {% for category in categories %}
                     <li>
-                        <a href="#" class="category-link">{{ category.name }}
+                        <a href="{% url 'category_products' category.slug %}" class="category-link">{{ category.name }}
                             {% if category.children.all %}
                                 <span class="dropdown-arrow" onclick="toggleSubcategories(this)">&#9660;</span>
                             {% endif %}
                         </a>
                         <ul class="category-children">
                             {% for subcategory in category.children.all %}
-                                <li><a href="#">{{ subcategory.name }}</a></li>
+                                <li><a href="{% url 'category_products' subcategory.slug %}">{{ subcategory.name }}</a></li>
                             {% endfor %}
                         </ul>
                         
@@ -45,7 +45,7 @@
             <main class="container">
                 <div class="row">
                     <div class="col">
-                    {% block products %}
+                    {% block content %}
                     {% endblock %}
                     </div>
                 </div>
