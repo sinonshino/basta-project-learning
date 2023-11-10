@@ -9,20 +9,91 @@
         <!-- Add my css file -->
         <link rel="stylesheet" href="{% static 'css/product.css' %}">
     </head>
+
     <body>
-        <header class="page-header">
-          <div class="container">
-              <h1><a href="/">Basta Streetwear</a></h1>
-          </div>
-        </header>
-        <main class="container">
-            <div class="row">
-                <div class="col">
-                {% block content %}
-                {% endblock %}
-                </div>
+        <div id="mySidenav" class="sidenav">
+            <h3 class="sidenav-title">Categories</h3>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <ul>
+                {% for category in categories %}
+                    <li>
+                        <a href="#" class="category-link">{{ category.name }}
+                            {% if category.children.all %}
+                                <span class="dropdown-arrow" onclick="toggleSubcategories(this)">&#9660;</span>
+                            {% endif %}
+                        </a>
+                        <ul class="category-children">
+                            {% for subcategory in category.children.all %}
+                                <li><a href="#">{{ subcategory.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                        
+                    </li>
+                {% endfor %}    
+            </ul>
+            
+        </div>
+
+        <span onclick="openNav()">Open</span>
+
+        <div id="main">
+            <header class="page-header">
+            <div class="container">
+                <h1><a href="/">Basta Streetwear</a></h1>
             </div>
-        </main>
-    </body>
+            </header>
+            <main class="container">
+                <div class="row">
+                    <div class="col">
+                    {% block products %}
+                    {% endblock %}
+                    </div>
+                </div>
+            </main>    
+        </div>
+
+        <script>
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        document.getElementById("mySidenav").style.width = "250px";
+        document.getElementById("main").style.marginLeft = "250px";
+
+        /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+            document.getElementById("main").style.marginLeft = "250px";
+        }
+
+        /* Set the width of the side navigation to 0 and the left margin of the page content to 0 */
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+            document.getElementById("main").style.marginLeft = "0";
+        }
+
+        // Add event listeners to the dropdown arrows with the class 'dropdown-arrow'
+        const dropdownArrows = document.querySelectorAll('.dropdown-arrow');
+        
+        dropdownArrows.forEach(arrow => {
+            arrow.addEventListener('click', toggleSubcategories);
+        });
+
+        // Function to toggle subcategories when a dropdown arrow is clicked
+        function toggleSubcategories(event) {
+            event.preventDefault();
+            const arrow = event.currentTarget;
+            const parent = arrow.parentElement;
+            const children = parent.nextElementSibling;
+
+            if (children) {
+                if (children.style.display === 'block') {
+                    children.style.display = 'none';
+                    parent.querySelector('.dropdown-arrow').style.transform = 'rotate(-90deg)';
+                } else {
+                    children.style.display = 'block';
+                    parent.querySelector('.dropdown-arrow').style.transform = 'rotate(0deg)';
+                }
+            }
+        }
+        </script>
     </body>
 </html>
+
