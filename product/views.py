@@ -26,6 +26,8 @@ def category_products(request, category_slug):
     products = category.products.all()    # Filter to only get objects that are related to that catergories' slug
     return render(request, 'product/category_products.html', {'category': category, 'products': products, 'categories': categories, 'subcategories': subcategories})
 
+def store(request):
+    return render(request, 'product/cart.html')
 
 def base(request):
     categories = Category.objects.all()

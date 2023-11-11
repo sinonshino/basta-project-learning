@@ -150,6 +150,15 @@ h4 {
     transition: transform 0.3s ease-in-out; /* Transition effect for rotation */
 }
 
+.material-symbols-outlined {
+  float: right;
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 400,
+  'GRAD' 0,
+  'opsz' 24
+}
+
 .toggle-button {
     width: 60px; /* Adjust the width to your preference */
     height: 60px; /* Set the height to make it a circle */

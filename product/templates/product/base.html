@@ -8,11 +8,12 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext">
         <!-- Add my css file -->
         <link rel="stylesheet" href="{% static 'css/product.css' %}">
-    </head>
+        <!--Add google font for shopping-cart-->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />    </head>
 
     <body>
         <div id="mySidenav" class="sidenav">
-            <h3 class="sidenav-title">Categories</h3>
+            <h3 class="sidenav-title"><a href="/">Categories</a></h3>
             <ul>
                 {% for category in categories %}
                     <li>
@@ -41,6 +42,7 @@
             <header class="page-header">
             <div class="container">
                 <h1><a href="/">Basta Streetwear</a></h1>
+                <a href="product/cart/" class="material-symbols-outlined">shopping_cart</span>    
             </div>
             </header>
             <main class="container">
