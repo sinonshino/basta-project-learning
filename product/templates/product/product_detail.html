@@ -1,6 +1,8 @@
 <!-- List of files this code block extends to -->
 {% extends 'product/base.html' %}
 
+{% load static %}
+
 <!-- This file contains the block of code that displays a single product -->
 <!-- can be called into other files using {% block name %} {% endblock %} -->
 {% block content %}
@@ -9,5 +11,10 @@
         <img src="{{ product.image.url }}" alt="{{ product.name }}">                        <!-- Get product image -->
         <p>€{{ product.price }}</p>                                                          <!-- Get product price -->
         <p>{{ product.description }}</p>                                                    <!-- Get product description -->
+        <button id="add-to-cart" data-product-id="{{ product.id }}">Add to cart</button>                            <!-- Add product to cart -->
     </article>
+
+
 {% endblock %}
+
+<script src="{% static 'js/script.js' %}"></script>
